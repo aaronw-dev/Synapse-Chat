@@ -25,7 +25,7 @@ body {
 
 .sidebar {
     background: #f0f0f0;
-    width: 350px;
+    width: 30%;
     padding: 10px;
     height: 100vh;
     overflow-y: scroll;
@@ -105,7 +105,11 @@ body {
 }
 
 .send-button svg {
-    fill: red;
+    fill: black;
+}
+
+.emoji-button svg {
+    fill: black;
 }
 
 .conversation-area {
@@ -120,6 +124,7 @@ body {
     width: 100%;
     box-sizing: border-box;
     padding: 20px;
+    overflow-y: scroll;
 }
 
 .message {
