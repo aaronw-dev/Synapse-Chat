@@ -33,3 +33,24 @@ time = 1000;
         mediaRecorder.stop();
     }, time);
 });*/
+const messagebox = document.getElementById("messagebox")
+const messagecontainer = document.getElementById("message-container")
+const emojibutton = document.getElementById("emoji-button")
+const sendbutton = document.getElementById("send-button")
+window.addEventListener("keypress", function(e){
+    if(e.code == "Enter" && document.activeElement === messagebox){
+        sendMessage()
+    }
+})
+sendbutton.addEventListener("click", function(e){
+    sendMessage()
+})
+function sendMessage(){
+    if(messagebox.value === "")
+        return
+    var messagediv = document.createElement("div")
+    messagediv.classList = "user message"
+    messagediv.innerHTML = messagebox.value
+    messagecontainer.appendChild(messagediv)
+    messagebox.value = "";
+}
