@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Myna</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="/static/myna-logo.svg" sizes="any" type="image/svg+xml">
+</head>
+
+<body>
+    <div class="myna-logo">
+        <img src="/static/myna-logo.svg" width="100%">
+        <div class="logo-container-text">Myna</div>
+    </div>
+    <div class="account-container">
+        <div class="form-sidebar">
+            <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+            <div class="accountform-container" id="login">
+                <form target="dummyframe" class="accountform" id="loginform" enctype="multipart/form-data">
+                    <h1 class="login-header">Log In</h1>
+                    <input type="email" id="login_emailinput" placeholder="Email" name="email">
+                    <input type="password" id="login_passwordinput" placeholder="password" name="password">
+                    <button onclick="loginForm()">Log in</button>
+                </form>
+                <div class="validationmessage" id="loginvalmsg">Validation Failed.</div>
+            </div>
+            <div hidden class="accountform-container" id="signup">
+                <form target="dummyframe" class="accountform" id="signupform" enctype="multipart/form-data">
+                    <h1 class="login-header">Create a Myna account</h1>
+                    <input type="email" id="signup_emailinput" placeholder="Email" name="email">
+                    <input type="password" id="signup_passwordinput" placeholder="password" name="password">
+                    <input type="email" id="signup_usernameinput" placeholder="Username" name="username">
+                    <input type="file" id="signup_fileinput" name="profilepic">
+                    <button onclick="signupForm()">Sign up</button>
+                </form>
+                <div class="validationmessage" id="signupvalmsg">Validation Failed.</div>
+            </div>
+            <button id="togglesignup">Sign up</button>
+        </div>
+    </div>
+
+    <script src="/static/account.js"></script>
+</body>
+
+</html>
