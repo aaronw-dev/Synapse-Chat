@@ -11,7 +11,6 @@ var isLoggingIn = true
 function isValid(string) {
     return !(typeof string === "string" && string.length === 0)
 }
-
 togglesignup.addEventListener("click", function (e) {
     logincontainer.hidden = !logincontainer.hidden
     signupcontainer.hidden = !signupcontainer.hidden
@@ -27,14 +26,6 @@ togglesignup.addEventListener("click", function (e) {
     });
 })
 
-window.addEventListener("keypress", function (e) {
-    if (e.code == "Enter") {
-        if (isLoggingIn)
-            loginForm()
-        else
-            signupForm()
-    }
-})
 
 function loginForm() {
     const email = document.getElementById("login_emailinput")
@@ -46,13 +37,17 @@ function loginForm() {
         xhr.onload = function (event) {
             var jsonresponse = JSON.parse(event.target.response)
             if (jsonresponse["auth_result"] == "success") {
-                console.log("Login success!")
+                var expirationDate = new Date();
+                expirationDate.setTime(expirationDate.getTime() + (1 * 60 * 60 * 1000));
+                var expires = "expires=" + expirationDate.toUTCString();
+                document.cookie = "sessioncookie=" + jsonresponse["cookie"] + "; " + expires + "; path=/";
                 window.location == window.location.assign(window.location.origin + "/messaging")
             } else if (jsonresponse["auth_result"] == "failed") {
-                console.log("Login failed.")
             }
         };
         var formData = new FormData(document.getElementById("loginform"));
+        var hashedpassword = sha256(password.value);
+        formData.set("password", hashedpassword)
         xhr.send(formData);
     } else {
         loginvalmsg.hidden = false
@@ -71,8 +66,7 @@ function signupForm() {
     const email = document.getElementById("signup_emailinput")
     const password = document.getElementById("signup_passwordinput")
     const username = document.getElementById("signup_usernameinput")
-    const file = document.getElementById("signup_fileinput")
-    if (email.checkValidity() && isValid(password.value) && isValid(username.value) && file.checkValidity()) {
+    if (email.checkValidity() && isValid(password.value) && isValid(username.value)) {
         signupvalmsg.hidden = true
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/signup");
