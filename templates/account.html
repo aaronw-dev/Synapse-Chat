@@ -29,8 +29,7 @@
                     <h1 class="login-header">Create a Myna account</h1>
                     <input type="email" id="signup_emailinput" placeholder="Email" name="email">
                     <input type="password" id="signup_passwordinput" placeholder="password" name="password">
-                    <input type="email" id="signup_usernameinput" placeholder="Username" name="username">
-                    <input type="file" id="signup_fileinput" name="profilepic">
+                    <input type="text" id="signup_usernameinput" placeholder="Username" name="username">
                     <button onclick="signupForm()">Sign up</button>
                 </form>
                 <div class="validationmessage" id="signupvalmsg">Validation Failed.</div>
@@ -38,7 +37,7 @@
             <button id="togglesignup">Sign up</button>
         </div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
     <script src="/static/account.js"></script>
 </body>
 
