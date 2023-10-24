@@ -8,9 +8,18 @@
 </head>
 
 <body>
-    <nav>
-        <img src="/static/images/logo.png" id="nav-logo"> Synapse
-    </nav>
+    <div class="index-container">
+
+        <div class="myna-logo">
+            <img src="/static/myna-logo.svg" width="100%">
+            <div class="logo-container-text">Myna</div>
+        </div>
+        <nav class="index-nav">
+            <button class="navbutton" onclick="alert('About Page')">About</button>
+            <button class="navbutton" onclick="alert('Protocol Page')">Protocol</button>
+            <button class="navbutton" onclick="location.assign('/account')">Log in</button>
+        </nav>
+    </div>
     <script src="/static/script.js"></script>
 </body>
 
