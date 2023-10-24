@@ -76,8 +76,6 @@ async function init() {
         pubkey = keyPair.publicKey;
         privkey = keyPair.privateKey;
     });
-    console.log(pubkey)
-    console.log(privkey)
     function createEventListeners() {
         window.addEventListener("keypress", function (e) {
             if (e.code == "Enter" && document.activeElement === messagebox) {
@@ -99,7 +97,7 @@ async function init() {
         var encryptor = new JSEncrypt({ default_key_size: keySize });
         encryptor.setPublicKey(pubkey)
         var encryptedmessage = encryptor.encrypt(messagebox.value)
-        console.log(encryptedmessage)
+        socket.emit("message", { message: encryptedmessage })
         messagebox.value = "";
     }
 }
